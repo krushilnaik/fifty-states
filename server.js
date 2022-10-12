@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 // set up all the main routes
 app.use(routes);
 
-app.get("/", (req, res) => {
+app.get("/", (_req, res) => {
   res.sendFile("index.html");
 });
 
