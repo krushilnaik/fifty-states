@@ -131,13 +131,28 @@ async function patchStateFunFactByIndex(req, res) {
  * @type {import("express").RequestHandler<{state: string}, any, {index: number}>}
  */
 async function deleteStateFunFactByIndex(req, res) {
+  const { state } = req.params;
   const { index } = req.body;
 
   if (!index) {
-    res.status(400).send({ message: "Error: must provide valid index starting at 1" });
+    res.status(400).send("Please provide a valid index (greater than 0)");
   }
 
-  res.status(200).send({ message: `${req.params.state} fun facts successfully updated` });
+  await State.findOne({ stateCode: state }).exec(async (error, data) => {
+    if (error) {
+      res.status(400).send("Error: No state with that code found");
+    }
+
+    // update the facts
+    let { funFacts } = data;
+    // minus one because the rubric asked to make the index passed in start at 1
+    // 0 is invalid
+    const removed = funFacts.splice(index - 1, 1);
+
+    await State.updateOne({ stateCode: state }, { $set: { funFacts } }).exec();
+
+    res.send(`Deleted fact "${removed}" from database`);
+  });
 }
 
 module.exports = {
