@@ -3,7 +3,23 @@ const State = require("../models/State");
 
 router.route("/").get((req, res) => {
   const { contig } = req.query;
-  //
+
+  let filters;
+
+  if (contig === undefined) {
+    filters = {};
+  } else {
+    if (contig === "true") {
+      filters = { stateCode: { $nin: ["AK", "HI"] } };
+    } else {
+      filters = { stateCode: { $in: ["AK", "HI"] } };
+    }
+  }
+
+  State.find(filters)
+    .select(["-_id", "-__v"])
+    .then((data) => res.json(data))
+    .catch((err) => res.status(500).json(err));
 });
 
 router.route("/:state").get((req, res) => {
@@ -19,33 +35,18 @@ router.route("/:state/admission").get((req, res) => {
   const { state } = req.params;
 
   State.findOne({ stateCode: state })
-    .select([])
+    .select(["state", "admitted", "-_id"])
     .then((data) => res.json(data))
     .catch((err) => res.status(500).json(err));
 });
 
 router.route("/:state/:field").get((req, res) => {
-  //
+  const { state, field } = req.params;
+
+  State.findOne({ stateCode: state })
+    .select(["state", field, "-_id"])
+    .then((data) => res.json(data))
+    .catch((err) => res.status(500).json(err));
 });
-
-// router.route("/states/:state/funfact").get((req, res) => {
-//   //
-// });
-
-// router.route("/states/:state/capital").get((req, res) => {
-//   //
-// });
-
-// router.route("/states/:state/nickname").get((req, res) => {
-//   //
-// });
-
-// router.route("/states/:state/nickname").get((req, res) => {
-//   //
-// });
-
-// router.route("/states/:state/population").get((req, res) => {
-//   //
-// });
 
 module.exports = router;
