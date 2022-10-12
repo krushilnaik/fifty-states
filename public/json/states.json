@@ -1,0 +1,47 @@
+[
+  {
+    "state": "Kansas",
+    "stateCode": "KS",
+    "capital": "Topeka",
+    "nickname": "Bae",
+    "population": 2913000,
+    "funFacts": [],
+    "admitted": 1945
+  },
+  {
+    "state": "Missouri",
+    "stateCode": "MO",
+    "capital": "Jefferson City",
+    "nickname": "Bae",
+    "population": 6124000,
+    "funFacts": [],
+    "admitted": 1945
+  },
+  {
+    "state": "Oklahoma",
+    "stateCode": "OK",
+    "capital": "Oklahoma City",
+    "nickname": "Bae",
+    "population": 3949000,
+    "funFacts": [],
+    "admitted": 1945
+  },
+  {
+    "state": "Nebraska",
+    "stateCode": "NE",
+    "capital": "Lincoln",
+    "nickname": "Bae",
+    "population": 1924000,
+    "funFacts": [],
+    "admitted": 1945
+  },
+  {
+    "state": "Colorado",
+    "stateCode": "CO",
+    "capital": "Denver",
+    "nickname": "Bae",
+    "population": 5685000,
+    "funFacts": [],
+    "admitted": 1945
+  }
+]
