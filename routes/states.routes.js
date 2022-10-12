@@ -1,52 +1,33 @@
 const router = require("express").Router();
-const State = require("../models/State");
+const {
+  getAllStates,
+  getStateByStateCode,
+  getStateField,
+  addStateFunFacts,
+  deleteStateFunFactByIndex,
+} = require("../controllers/state.controller");
 
-router.route("/").get((req, res) => {
-  const { contig } = req.query;
+// const State = require("../models/State");
 
-  let filters;
+router.route("/").get(getAllStates);
 
-  if (contig === undefined) {
-    filters = {};
-  } else {
-    if (contig === "true") {
-      filters = { stateCode: { $nin: ["AK", "HI"] } };
-    } else {
-      filters = { stateCode: { $in: ["AK", "HI"] } };
-    }
-  }
+router.route("/:state").get(getStateByStateCode);
 
-  State.find(filters)
-    .select(["-_id", "-__v"])
-    .then((data) => res.json(data))
-    .catch((err) => res.status(500).json(err));
-});
+// router.route("/:state/admission").get((req, res) => {
+//   const { state } = req.params;
 
-router.route("/:state").get((req, res) => {
-  const { state } = req.params;
+//   State.findOne({ stateCode: state })
+//     .select(["state", "admitted", "-_id"])
+//     .then((data) => res.json(data))
+//     .catch((err) => res.status(500).json(err));
+// });
 
-  State.findOne({ stateCode: state })
-    .select(["-_id", "-__v"])
-    .then((data) => res.json(data))
-    .catch((err) => res.status(500).json(err));
-});
+router
+  .route("/:state/funfact")
+  .get(getStateField)
+  .post(addStateFunFacts)
+  .delete(deleteStateFunFactByIndex);
 
-router.route("/:state/admission").get((req, res) => {
-  const { state } = req.params;
-
-  State.findOne({ stateCode: state })
-    .select(["state", "admitted", "-_id"])
-    .then((data) => res.json(data))
-    .catch((err) => res.status(500).json(err));
-});
-
-router.route("/:state/:field").get((req, res) => {
-  const { state, field } = req.params;
-
-  State.findOne({ stateCode: state })
-    .select(["state", field, "-_id"])
-    .then((data) => res.json(data))
-    .catch((err) => res.status(500).json(err));
-});
+router.route("/:state/:field").get(getStateField);
 
 module.exports = router;
