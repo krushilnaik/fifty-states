@@ -2,32 +2,26 @@ const router = require("express").Router();
 const {
   getAllStates,
   getStateByStateCode,
-  getStateField,
   addStateFunFacts,
   deleteStateFunFactByIndex,
+  patchStateFunFactByIndex,
+  getStateRandomFunFact,
+  getFieldByStateCode,
 } = require("../controllers/state.controller");
-
-// const State = require("../models/State");
 
 router.route("/").get(getAllStates);
 
 router.route("/:state").get(getStateByStateCode);
 
-// router.route("/:state/admission").get((req, res) => {
-//   const { state } = req.params;
-
-//   State.findOne({ stateCode: state })
-//     .select(["state", "admitted", "-_id"])
-//     .then((data) => res.json(data))
-//     .catch((err) => res.status(500).json(err));
-// });
+router.route("/:state/:field").get(getFieldByStateCode);
 
 router
   .route("/:state/funfact")
-  .get(getStateField)
+  .get(getStateRandomFunFact)
   .post(addStateFunFacts)
+  .patch(patchStateFunFactByIndex)
   .delete(deleteStateFunFactByIndex);
 
-router.route("/:state/:field").get(getStateField);
+router.route("/:state/:field").get(getFieldByStateCode);
 
 module.exports = router;
