@@ -15,7 +15,7 @@ const {
 // configure templating engine
 app.engine("handlebars", engine());
 app.set("view engine", "handlebars");
-app.set("views", "./views");
+app.set("views", path.join(__dirname, "./views"));
 
 // configure middleware
 app.use(express.static(path.join(__dirname, "public")));
