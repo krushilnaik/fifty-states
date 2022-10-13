@@ -38,4 +38,16 @@ ul {
   justify-content: center;
   gap: 2rem;
   list-style-type: none;
+  margin-block: 20px;
+}
+
+a {
+  font-size: 20px;
+  text-decoration: none;
+  color: lightsalmon;
+  transition: color 300ms;
+}
+
+a:hover {
+  color: tomato;
 }
