@@ -13,8 +13,6 @@ router.route("/").get(getAllStates);
 
 router.route("/:state").get(getStateByStateCode);
 
-router.route("/:state/:field").get(getFieldByStateCode);
-
 router
   .route("/:state/funfact")
   .get(getStateRandomFunFact)

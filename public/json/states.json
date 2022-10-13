@@ -3,54 +3,66 @@
     "state": "Kansas",
     "stateCode": "KS",
     "capital": "Topeka",
-    "nickname": "Bae",
+    "nickname": "Sunflower State",
     "population": 2913000,
     "funFacts": [
-      "fun fact 1",
-      "fun fact 2",
-      "fun fact 3",
-      "fun fact 4",
-      "fun fact 5",
-      "fun fact 6",
-      "fun fact 7",
-      "fun fact 8"
+      "Kansas fun fact 1",
+      "Kansas fun fact 2",
+      "Kansas fun fact 3",
+      "Kansas fun fact 4",
+      "Kansas fun fact 5",
+      "Kansas fun fact 6",
+      "Kansas fun fact 7",
+      "Kansas fun fact 8"
     ],
-    "admitted": 1945
+    "admitted": 1861
   },
   {
     "state": "Missouri",
     "stateCode": "MO",
     "capital": "Jefferson City",
-    "nickname": "Bae",
+    "nickname": "Show Me State",
     "population": 6124000,
-    "funFacts": [],
-    "admitted": 1945
+    "funFacts": [
+      "Missouri fun fact 1",
+      "Missouri fun fact 2",
+      "Missouri fun fact 3",
+      "Missouri fun fact 4"
+    ],
+    "admitted": 1821
   },
   {
     "state": "Oklahoma",
     "stateCode": "OK",
     "capital": "Oklahoma City",
-    "nickname": "Bae",
+    "nickname": "Sooner State",
     "population": 3949000,
-    "funFacts": [],
-    "admitted": 1945
+    "funFacts": [
+      "Oklahoma fun fact 1",
+      "Oklahoma fun fact 2",
+      "Oklahoma fun fact 3",
+      "Oklahoma fun fact 4",
+      "Oklahoma fun fact 5",
+      "Oklahoma fun fact 6"
+    ],
+    "admitted": 1907
   },
   {
     "state": "Nebraska",
     "stateCode": "NE",
     "capital": "Lincoln",
-    "nickname": "Bae",
+    "nickname": "Cornhusker State",
     "population": 1924000,
-    "funFacts": [],
-    "admitted": 1945
+    "funFacts": ["Nebraska fun fact 1"],
+    "admitted": 1867
   },
   {
     "state": "Colorado",
     "stateCode": "CO",
     "capital": "Denver",
-    "nickname": "Bae",
+    "nickname": "Centennial State",
     "population": 5685000,
     "funFacts": [],
-    "admitted": 1945
+    "admitted": 1876
   }
 ]
