@@ -1,9 +1,10 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const { engine } = require("express-handlebars");
+const swaggerJSDoc = require("swagger-jsdoc");
+const swaggerUi = require("swagger-ui-express");
 const routes = require("./routes");
 const path = require("path");
-const State = require("./models/State");
 
 const app = express();
 
@@ -22,30 +23,29 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// set up API documentation generator
+
+const swaggerDefinition = {
+  openapi: "3.0.0",
+  info: {
+    title: "Express API for JSONPlaceholder",
+    version: "1.0.0",
+  },
+};
+
+const options = {
+  swaggerDefinition,
+  // Paths to files containing OpenAPI definitions
+  apis: [path.join(__dirname, "./routes/*.js")],
+};
+
+const swaggerSpec = swaggerJSDoc(options);
+
+// API documentation is available at /docs
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
 // set up all the main routes
 app.use(routes);
-
-app.get("/", (_req, res) => {
-  State.find({})
-    .select(["state", "stateCode", "-_id"])
-    .then((data) => {
-      // build the home page then return it in the response
-      res.render("home", {
-        states: data.map(({ state, stateCode }) => `${state} (${stateCode})`),
-      });
-    })
-    .catch((error) => res.status(500).send(error));
-});
-
-// test route to see if the application is working properly
-app.get("/health", (_req, res) => {
-  res.status(200).json({ message: "OK" });
-});
-
-// catch all in case of an invalid route
-app.get("*", (_req, res) => {
-  res.status(404).json({ error: "404 Not Found" });
-});
 
 // connect to MongoDB
 mongoose.connect(MONGODB_URI);
