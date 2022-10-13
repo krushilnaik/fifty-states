@@ -1,7 +1,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const { engine } = require("express-handlebars");
 const routes = require("./routes");
 const path = require("path");
+const State = require("./models/State");
 
 const app = express();
 
@@ -9,6 +11,11 @@ const app = express();
 const {
   parsed: { MONGODB_URI = "mongodb://localhost/states", PORT = 8080 },
 } = require("dotenv").config();
+
+// configure templating engine
+app.engine("handlebars", engine());
+app.set("view engine", "handlebars");
+app.set("views", "./views");
 
 // configure middleware
 app.use(express.static(path.join(__dirname, "public")));
@@ -19,7 +26,15 @@ app.use(express.urlencoded({ extended: true }));
 app.use(routes);
 
 app.get("/", (_req, res) => {
-  res.sendFile("index.html");
+  State.find({})
+    .select(["state", "stateCode", "-_id"])
+    .then((data) => {
+      // build the home page then return it in the response
+      res.render("home", {
+        states: data.map(({ state, stateCode }) => `${state} (${stateCode})`),
+      });
+    })
+    .catch((error) => res.status(500).send(error));
 });
 
 // test route to see if the application is working properly
