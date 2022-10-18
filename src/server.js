@@ -28,7 +28,7 @@ app.use(express.urlencoded({ extended: true }));
 const swaggerDefinition = {
   openapi: "3.0.0",
   info: {
-    title: "Express API for JSONPlaceholder",
+    title: "Express API for FiftyStates",
     version: "1.0.0",
   },
 };
@@ -42,7 +42,13 @@ const options = {
 const swaggerSpec = swaggerJSDoc(options);
 
 // API documentation is available at /docs
-app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use(
+  "/docs",
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerSpec, {
+    customCssUrl: "/css/swagger.css",
+  })
+);
 
 // set up all the main routes
 app.use(routes);

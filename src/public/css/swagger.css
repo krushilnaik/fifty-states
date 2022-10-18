@@ -1,0 +1,20 @@
+body {
+  background: #121318;
+}
+
+h2,
+h3 {
+  color: #b0bbb0 !important;
+}
+
+.swagger-ui .topbar {
+  display: none;
+}
+
+.opblock-summary-path {
+  color: honeydew !important;
+}
+
+.opblock-summary-description {
+  color: rgba(240, 255, 240, 0.7) !important;
+}
