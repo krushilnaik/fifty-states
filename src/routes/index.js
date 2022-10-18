@@ -15,7 +15,6 @@ router.get("/", (_req, res) => {
     .catch((error) => res.status(500).send(error));
 });
 
-// test route to see if the application is working properly
 /**
  * @swagger
  * /health:
