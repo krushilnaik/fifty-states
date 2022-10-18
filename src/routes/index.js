@@ -26,6 +26,7 @@ router.get("/health", (_req, res) => {
   res.status(200).json({ message: "OK" });
 });
 
+// makes prepends "/states" to all routes defined in `stateRoutes`
 router.use("/states", stateRoutes);
 
 // catch all in case of an invalid route
