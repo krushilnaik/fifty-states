@@ -48,7 +48,7 @@ router.route("/:state").get(getStateByStateCode);
  *         schema:
  *           type: string
  *   post:
- *     summary:
+ *     summary: Append more fun facts
  *     description:
  *     parameters:
  *       - in: path
@@ -69,7 +69,7 @@ router.route("/:state").get(getStateByStateCode);
  *                 description: List of fun facts to append to the ones already in the database.
  *                 example: ["fun fact 1", "fun fact 2"]
  *   patch:
- *     summary:
+ *     summary: Change a fact by index
  *     description:
  *     parameters:
  *       - in: path
@@ -79,8 +79,8 @@ router.route("/:state").get(getStateByStateCode);
  *         schema:
  *           type: string
  *   delete:
- *     summary:
- *     description:
+ *     summary: Delete a fun fact
+ *     description: Delete a fun fact
  *     parameters:
  *       - in: path
  *         name: state
