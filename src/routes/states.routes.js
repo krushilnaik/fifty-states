@@ -38,8 +38,8 @@ router.route("/:state").get(getStateByStateCode);
  * @swagger
  * /states/{state}/funfact:
  *   get:
- *     summary: get a single state's information
- *     description: Look a state up by the state code and get the information stored in our database. Not all states may be supported. Check the home page for a list of supported states.
+ *     summary: Get a random fun fact about the state
+ *     description: Get a random fun fact about the state. Check the home page for a list of supported states.
  *     parameters:
  *       - in: path
  *         name: state

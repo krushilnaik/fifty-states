@@ -46,7 +46,7 @@ app.use(
   "/docs",
   swaggerUi.serve,
   swaggerUi.setup(swaggerSpec, {
-    customCssUrl: "/css/swagger.css",
+    // customCssUrl: "/css/swagger.css",
   })
 );
 
