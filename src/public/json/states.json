@@ -18,6 +18,32 @@
     "admitted": 1861
   },
   {
+    "state": "Hawaii",
+    "stateCode": "HI",
+    "capital": "Honolulu",
+    "nickname": "Aloha State",
+    "population": 1442000,
+    "funFacts": [
+      "Hawaii fun fact 1",
+      "Hawaii fun fact 2",
+      "Hawaii fun fact 3",
+      "Hawaii fun fact 4",
+      "Hawaii fun fact 5",
+      "Hawaii fun fact 6",
+      "Hawaii fun fact 7"
+    ],
+    "admitted": 1959
+  },
+  {
+    "state": "Alaska",
+    "stateCode": "AK",
+    "capital": "Juneau",
+    "nickname": "Sunflower State",
+    "population": 732673,
+    "funFacts": ["Alaska fun fact 1", "Alaska fun fact 2", "Alaska fun fact 3"],
+    "admitted": 1959
+  },
+  {
     "state": "Missouri",
     "stateCode": "MO",
     "capital": "Jefferson City",
